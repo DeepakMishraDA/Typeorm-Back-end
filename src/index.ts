@@ -1,15 +1,19 @@
 import { createConnection } from "typeorm";
 //import dotenv from "dotenv";
 
+import { Client } from "./entity-schemas/Clients";
+
 const app = async () => {
   try {
     await createConnection({
-      type: process.env["Type"],
-      host: process.env["Host"],
-      port: process.env["Port"],
-      username: process.env["Username"],
-      password: process.env["Password"],
-      database: process.env["Database"],
+      type: "postgres",
+      host: "localhost",
+      port: 5432,
+      username: "postgres",
+      password: "XXXXXX",
+      database: "jobs",
+      entities: [Client],
+      synchronize: true,
     });
     console.log("Connection is established!");
   } catch (error) {
