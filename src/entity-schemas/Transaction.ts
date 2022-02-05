@@ -5,7 +5,10 @@ import {
   CreateDateColumn,
   Column,
   BaseEntity,
+  ManyToOne,
+  JoinColumn,
 } from "typeorm";
+import { Client } from "./Clients";
 
 enum Transactiontypes {
   Deposit = "Deposit",

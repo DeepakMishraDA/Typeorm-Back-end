@@ -1,5 +1,14 @@
-import { Entity, Column, CreateDateColumn } from "typeorm";
+import {
+  Entity,
+  Column,
+  CreateDateColumn,
+  OneToMany,
+  JoinColumn,
+  OneToOne,
+} from "typeorm";
 import { Person } from "./util/Person";
+import { Transaction } from "./Transaction";
+import { Banker } from "./Bankers";
 
 @Entity()
 export class Client extends Person {
@@ -21,4 +30,11 @@ export class Client extends Person {
 
   @CreateDateColumn()
   created_on: Date;
+
+  @Column()
+  bankerId: Banker;
+
+  @OneToOne(() => Banker, (banker) => banker.client)
+  @JoinColumn()
+  banker: Banker;
 }

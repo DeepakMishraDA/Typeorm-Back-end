@@ -28,6 +28,7 @@ export class Person extends BaseEntity {
   @Column({
     type: "simple-array",
     default: [],
+    nullable: true,
   })
   address: string[];
 }

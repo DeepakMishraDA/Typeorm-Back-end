@@ -1,4 +1,5 @@
-import { Entity, Column, CreateDateColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, OneToOne } from "typeorm";
+import { Client } from "./Clients";
 import { Person } from "./util/Person";
 
 @Entity()
@@ -10,5 +11,11 @@ export class Banker extends Person {
   employee_number: string;
 
   @CreateDateColumn()
-  joined_on: Date;
+  joined_date: Date;
+
+  // @Column()
+  // clientId: number
+
+  @OneToOne(() => Client, (client) => client.banker)
+  client: Client;
 }
