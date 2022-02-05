@@ -32,9 +32,8 @@ export class Client extends Person {
   created_on: Date;
 
   @Column()
-  bankerId: Banker;
+  bankerid: number;
 
-  @OneToOne(() => Banker, (banker) => banker.client)
-  @JoinColumn()
+  @OneToOne(() => Banker, (banker) => banker.id)
   banker: Banker;
 }

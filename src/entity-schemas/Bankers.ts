@@ -15,7 +15,4 @@ export class Banker extends Person {
 
   // @Column()
   // clientId: number
-
-  @OneToOne(() => Client, (client) => client.banker)
-  client: Client;
 }

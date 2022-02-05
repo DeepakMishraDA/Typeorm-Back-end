@@ -13,6 +13,7 @@ export class Person extends BaseEntity {
 
   @Column({
     unique: true,
+    nullable: true,
   })
   email: string;
 
