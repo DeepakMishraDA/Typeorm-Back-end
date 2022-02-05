@@ -20,13 +20,16 @@ export class Transaction extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    type: "enum",
-    enum: Transactiontypes,
-  })
-  @Generated("uuid")
-  type: string;
+  // @Column({
+  //   type: "enum",
+  //   enum: Transactiontypes,
+  // })
+  // @Generated("uuid")
+  // type: string;
 
   @CreateDateColumn()
   date: Date;
+
+  @ManyToOne(() => Client, (client) => client.id, { onDelete: "SET NULL" })
+  client: Client;
 }

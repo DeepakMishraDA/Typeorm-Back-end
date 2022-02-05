@@ -5,6 +5,8 @@ import {
   OneToMany,
   JoinColumn,
   OneToOne,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
 import { Person } from "./util/Person";
 import { Transaction } from "./Transaction";
@@ -31,9 +33,10 @@ export class Client extends Person {
   @CreateDateColumn()
   created_on: Date;
 
-  @Column()
-  bankerid: number;
+  @ManyToMany(() => Banker, (banker) => banker.id)
+  @JoinTable({ name: "client_banker" })
+  banker: Banker[];
 
-  @OneToOne(() => Banker, (banker) => banker.id)
-  banker: Banker;
+  @OneToMany(() => Transaction, (transaction) => transaction.id)
+  transactions: Transaction[];
 }

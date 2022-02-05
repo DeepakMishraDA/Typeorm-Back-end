@@ -19,8 +19,8 @@ const app = async () => {
       entities: [Client, Banker, Transaction],
       synchronize: true,
     });
-    const tableClExist = await Client.find();
-    console.log(tableClExist.push());
+    const tableClExist = await Banker.find();
+    console.log(tableClExist);
   } catch (error) {
     console.log(error);
   }
