@@ -1,8 +1,9 @@
 import { createConnection } from "typeorm";
 import dotenv from "dotenv";
 
-import { Client } from "./entity-schemas/Clients";
+// import { Client } from "./entity-schemas/Clients";
 import { Banker } from "./entity-schemas/Bankers";
+import { Client } from "./entity-schemas/Clients";
 import { Transaction } from "./entity-schemas/Transaction";
 
 dotenv.config();
@@ -16,7 +17,7 @@ const app = async () => {
       username: process.env.Username,
       password: process.env.Password as string,
       database: process.env.Database as string,
-      entities: [Client, Banker, Transaction],
+      entities: [Banker, Client, Transaction],
       synchronize: true,
     });
     const tableClExist = await Banker.find();
