@@ -2,9 +2,9 @@ import { createConnection } from "typeorm";
 import dotenv from "dotenv";
 
 // import { Client } from "./entity-schemas/Clients";
-import { Banker } from "./entity-schemas/Bankers";
-import { Client } from "./entity-schemas/Clients";
-import { Transaction } from "./entity-schemas/Transaction";
+import { Sensor } from "./entity-schemas/Sensor";
+import { Building } from "./entity-schemas/Building";
+import { Reading } from "./entity-schemas/Reading";
 
 dotenv.config();
 
@@ -17,11 +17,11 @@ const app = async () => {
       username: process.env.Username,
       password: process.env.Password as string,
       database: process.env.Database as string,
-      entities: [Banker, Client, Transaction],
+      entities: [Sensor, Building, Reading],
       synchronize: true,
     });
-    const tableClExist = await Banker.find();
-    console.log(tableClExist);
+    //const tableClExist = await Sensor.find();
+    console.log("Successful");
   } catch (error) {
     console.log(error);
   }
